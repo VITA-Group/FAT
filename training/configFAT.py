@@ -13,7 +13,7 @@ def train_epoch_fat(model, optimizer, writer, train_dataloaders, use_loss, phase
 
     for batch, sample in enumerate(tqdm(train_dataloaders[phase])):
         images = Variable(sample['img']).cuda() if phase == 'train' else Variable(sample['img'], volatile=True).cuda()
-        labels = Variable(sample['label']).data.cuda()
+        labels = Variable(sample['label']).cuda()
 
         # zero the parameter gradients
         optimizer.zero_grad()
